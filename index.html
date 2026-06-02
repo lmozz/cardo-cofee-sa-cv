@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardocoffee | Distribuidor Autorizado Wood-Mizer El Salvador</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            orange: '#F26522', // Naranja Wood-Mizer original
+                            dark: '#111111',
+                            charcoal: '#1E1E1E',
+                            gray: '#2D2D2D',
+                            accent: '#3E8E41', // Verde forestal
+                            light: '#F5F5F7'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- ScrollReveal CDN para efectos de scroll sutiles -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        /* Personalización de barra de desplazamiento */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111111;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #F26522;
+            border-radius: 4px;
+        }
+        /* Ocultar barra de scroll en contenedores horizontales móviles */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        /* Estilos CSS personalizados para Parallax */
+        .parallax-bg {
+            will-change: transform;
+            transform: translateZ(0);
+        }
+    </style>
+</head>
+<body class="bg-brand-light text-brand-dark dark:bg-brand-dark dark:text-white overflow-x-hidden antialiased">
+
+    <!-- HEADER / NAVEGACIÓN (Responsivo Optimizado con Menú Fullscreen) -->
+    <header class="fixed top-0 left-0 w-full bg-white/90 dark:bg-brand-dark/90 backdrop-blur-lg text-brand-dark dark:text-white z-50 border-b border-gray-200 dark:border-white/10 transition-all duration-300" id="mainHeader">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logotipo -->
+                <div class="flex items-center space-x-2 sm:space-x-3 flex-shrink-0">
+                    <div class="bg-brand-orange text-white font-extrabold px-2.5 py-1.5 sm:px-3 sm:py-1.5 rounded text-base sm:text-lg tracking-wider shadow-md">
+                        WM
+                    </div>
+                    <div>
+                        <span class="text-base sm:text-xl font-black tracking-tight block text-brand-dark dark:text-white">CARDOCOFFEE</span>
+                        <span class="text-[8px] sm:text-[10px] uppercase tracking-[0.2em] text-brand-orange font-bold block -mt-1">Representante Wood-Mizer</span>
+                    </div>
+                </div>
+
+                <!-- Enlaces de Navegación de Escritorio -->
+                <nav class="hidden lg:flex space-x-4 xl:space-x-8 text-xs xl:text-sm font-semibold tracking-wide">
+                    <a href="#inicio" class="text-brand-dark dark:text-white hover:text-brand-orange dark:hover:text-brand-orange transition-colors">Inicio</a>
+                    <a href="#maquinaria" class="text-gray-600 dark:text-gray-300 hover:text-brand-orange transition-colors">Aserraderos</a>
+                    <a href="#repuestos" class="text-gray-600 dark:text-gray-300 hover:text-brand-orange transition-colors">Sierras y Hojas</a>
+                    <a href="#calculadora" class="text-gray-600 dark:text-gray-300 hover:text-brand-orange transition-colors">Calculadora</a>
+                    <a href="#trayectoria" class="text-gray-600 dark:text-gray-300 hover:text-brand-orange transition-colors">Nuestros 25 Años</a>
+                    <a href="#contacto" class="text-gray-600 dark:text-gray-300 hover:text-brand-orange transition-colors">Contacto</a>
+                </nav>
+
+                <!-- Botón de Acción, Selector de Tema e Indicador -->
+                <div class="hidden lg:flex items-center space-x-3 xl:space-x-6 flex-shrink-0">
+                    <!-- Selector de Tema (Botón Sol/Luna) -->
+                    <button onclick="toggleDarkMode()" class="p-2.5 rounded-xl bg-gray-100/80 dark:bg-brand-charcoal/80 backdrop-blur-md text-gray-800 dark:text-yellow-400 border border-gray-200 dark:border-white/10 hover:scale-105 transition-all" id="themeToggleBtn" title="Cambiar Tema">
+                        <!-- Icono Luna (Modo Claro) -->
+                        <svg class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                        </svg>
+                        <!-- Icono Sol (Modo Oscuro) -->
+                        <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.364l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
+                        </svg>
+                    </button>
+
+                    <!-- Soporte Activo -->
+                    <span class="text-xs text-brand-accent hidden xl:flex items-center gap-1.5 font-semibold">
+                        <span class="w-2.5 h-2.5 rounded-full bg-brand-accent animate-ping"></span>
+                        Soporte Activo
+                    </span>
+                    
+                    <a href="#contacto" class="bg-brand-orange hover:bg-orange-600 text-white px-4 py-2.5 xl:px-5 xl:py-2.5 rounded-lg text-xs xl:text-sm font-bold tracking-wider transition-all transform hover:-translate-y-0.5 shadow-lg shadow-brand-orange/20">
+                        COTIZAR
+                    </a>
+                </div>
+
+                <!-- Controles de Menú Móvil -->
+                <div class="flex items-center space-x-2 lg:hidden">
+                    <button onclick="toggleDarkMode()" class="p-2.5 rounded-xl bg-gray-100/80 dark:bg-brand-charcoal/80 backdrop-blur-md text-gray-800 dark:text-yellow-400 border border-gray-200 dark:border-white/10" title="Cambiar Tema" aria-label="Cambiar Tema">
+                        <svg class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+                        <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.364l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" /></svg>
+                    </button>
+                    <button class="text-brand-dark dark:text-white p-2.5 rounded-xl bg-gray-100/80 dark:bg-brand-charcoal/80 backdrop-blur-md border border-gray-200 dark:border-white/10 hover:text-brand-orange focus:outline-none" id="mobileMenuBtn" aria-label="Menu principal">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" id="hamburgerIcon">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                        <svg class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" id="closeIcon">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menú Desplegable Móvil (PANTALLA COMPLETA h-screen por debajo de 1024px) -->
+        <div class="hidden fixed top-20 left-0 w-full h-[calc(100vh-5rem)] bg-white/95 dark:bg-brand-charcoal/95 backdrop-blur-lg border-t border-gray-200 dark:border-white/10 px-6 py-8 flex-col justify-between lg:hidden z-40 overflow-y-auto transition-all duration-300 ease-in-out" id="mobileMenu">
+            <!-- Enlaces de navegación superiores -->
+            <div class="flex flex-col space-y-3">
+                <a href="#inicio" class="block text-brand-dark dark:text-white hover:text-brand-orange py-3 px-4 rounded-xl hover:bg-gray-100 dark:hover:bg-brand-dark font-semibold text-lg transition-colors" onclick="toggleMenu()">Inicio</a>
+                <a href="#maquinaria" class="block text-gray-750 dark:text-gray-300 hover:text-brand-orange py-3 px-4 rounded-xl hover:bg-gray-100 dark:hover:bg-brand-dark font-semibold text-lg transition-colors" onclick="toggleMenu()">Aserraderos</a>
+                <a href="#repuestos" class="block text-gray-750 dark:text-gray-300 hover:text-brand-orange py-3 px-4 rounded-xl hover:bg-gray-100 dark:hover:bg-brand-dark font-semibold text-lg transition-colors" onclick="toggleMenu()">Sierras y Hojas</a>
+                <a href="#calculadora" class="block text-gray-750 dark:text-gray-300 hover:text-brand-orange py-3 px-4 rounded-xl hover:bg-gray-100 dark:hover:bg-brand-dark font-semibold text-lg transition-colors" onclick="toggleMenu()">Calculadora</a>
+                <a href="#trayectoria" class="block text-gray-750 dark:text-gray-300 hover:text-brand-orange py-3 px-4 rounded-xl hover:bg-gray-100 dark:hover:bg-brand-dark font-semibold text-lg transition-colors" onclick="toggleMenu()">Nuestros 25 Años</a>
+            </div>
+            
+            <!-- Botón inferior -->
+            <div class="pt-6 pb-4">
+                <a href="#contacto" class="block text-white bg-brand-orange hover:bg-orange-600 text-center py-4 rounded-xl font-bold text-lg shadow-lg shadow-brand-orange/20 transition-all" onclick="toggleMenu()">Cotizar Ahora</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- SECCIÓN HERO CON EFECTO PARALLAX REAL -->
+    <section id="inicio" class="relative bg-gray-100 dark:bg-brand-dark text-brand-dark dark:text-white min-h-screen flex items-center pt-24 pb-12 sm:pb-20 overflow-hidden">
+        <!-- Imagen de Fondo Estética con Clase Parallax -->
+        <div class="absolute inset-0 z-0 opacity-20 dark:opacity-45 h-[120%] w-full top-0 left-0 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1541535650810-10d26f5c2ab3?auto=format&fit=crop&q=80&w=1920" alt="Timber Processing" class="parallax-bg w-full h-full object-cover filter brightness-50 mix-blend-multiply">
+        </div>
+        <!-- Capa de Degradado Adaptativo -->
+        <div class="absolute inset-0 bg-gradient-to-b sm:bg-gradient-to-r from-gray-100 via-gray-100/95 to-transparent dark:from-brand-dark dark:via-brand-dark/95 dark:to-transparent z-1"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 lg:py-32 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-7 space-y-6 text-left sr-left">
+                <div class="inline-flex items-center space-x-2 bg-brand-orange/10 dark:bg-brand-orange/20 border border-brand-orange/30 dark:border-brand-orange/40 text-brand-orange px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
+                    <span>★ 25 Años de Liderazgo en El Salvador</span>
+                </div>
+                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight text-brand-dark dark:text-white">
+                    Del Bosque al <br class="hidden sm:inline">
+                    <span class="text-brand-orange">Rendimiento Máximo</span>
+                </h1>
+                <p class="text-base sm:text-lg text-gray-750 dark:text-gray-300 max-w-xl leading-relaxed">
+                    Cardocoffee S.A. de C.V. es el único distribuidor autorizado de la tecnología revolucionaria <span class="text-brand-dark dark:text-white font-bold">Wood-Mizer</span> en El Salvador. Ofrecemos aserraderos de cinta angosta que reducen drásticamente el desperdicio y aumentan tu ganancia hasta un 60%.
+                </p>
+                
+                <!-- Indicadores Clave -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 py-6 border-t border-b border-gray-300 dark:border-white/10 max-w-xl">
+                    <div class="flex sm:flex-col items-center sm:items-start space-x-3 sm:space-x-0">
+                        <span class="text-3xl font-extrabold text-brand-orange">60%</span>
+                        <span class="text-xs text-gray-555 dark:text-gray-400">Más producción final</span>
+                    </div>
+                    <div class="flex sm:flex-col items-center sm:items-start space-x-3 sm:space-x-0 border-t sm:border-t-0 sm:pt-0 pt-3 border-gray-300 dark:border-white/5">
+                        <span class="text-3xl font-extrabold text-brand-dark dark:text-white">25+</span>
+                        <span class="text-xs text-gray-555 dark:text-gray-400">Años de soporte local</span>
+                    </div>
+                    <div class="flex sm:flex-col items-center sm:items-start space-x-3 sm:space-x-0 border-t sm:border-t-0 sm:pt-0 pt-3 border-gray-300 dark:border-white/5">
+                        <span class="text-3xl font-extrabold text-brand-accent font-bold">90%</span>
+                        <span class="text-xs text-gray-555 dark:text-gray-400">Menos merma de aserrín</span>
+                    </div>
+                </div>
+
+                <!-- Botones de Acción -->
+                <div class="flex flex-col sm:flex-row gap-4 pt-2">
+                    <a href="#maquinaria" class="bg-brand-orange hover:bg-orange-600 text-white font-bold px-8 py-4 rounded-xl text-center tracking-wider transition-all shadow-lg shadow-brand-orange/30 flex items-center justify-center gap-2">
+                        <span>Ver Línea de Aserraderos</span>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </a>
+                    <a href="#calculadora" class="bg-white/80 dark:bg-transparent hover:bg-gray-200 dark:hover:bg-white/5 border border-gray-300 dark:border-white/30 text-brand-dark dark:text-white font-bold px-8 py-4 rounded-xl text-center tracking-wider transition-all flex items-center justify-center gap-2">
+                        <span>Simular tu Rendimiento</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Insignia de Distribuidor VIP (Glassmorphism Premium) -->
+            <div class="lg:col-span-5 flex justify-center w-full mt-8 lg:mt-0 sr-right">
+                <div class="relative w-full max-w-sm bg-white/40 dark:bg-brand-charcoal/40 border border-white/50 dark:border-white/10 rounded-3xl p-6 sm:p-8 shadow-2xl backdrop-blur-xl transition-all duration-300 hover:shadow-brand-orange/10 hover:border-brand-orange/30">
+                    <!-- Banda Naranja Wood-Mizer -->
+                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-brand-orange text-white text-[10px] font-black uppercase tracking-widest px-4 py-1.5 rounded-full shadow-lg whitespace-nowrap">
+                        DISTRIBUIDOR OFICIAL
+                    </div>
+                    
+                    <div class="text-center pt-4 space-y-4">
+                        <div class="mx-auto w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-to-tr from-yellow-500/20 to-amber-300/30 dark:from-yellow-500/10 dark:to-amber-300/20 flex items-center justify-center shadow-lg border-2 border-white/30 dark:border-white/15 backdrop-blur-md">
+                            <span class="text-brand-dark dark:text-white font-black text-xl sm:text-2xl tracking-tighter shadow-sm">$250k+</span>
+                        </div>
+                        <div>
+                            <h3 class="text-base sm:text-lg font-bold text-brand-dark dark:text-white">Premio al Servicio de Excelencia</h3>
+                            <p class="text-xs text-gray-700 dark:text-gray-450 mt-1 leading-relaxed">Galardonados por la sede global de Wood-Mizer por más de una década de soporte postventa premium y repuestos garantizados.</p>
+                        </div>
+
+                        <div class="bg-white/40 dark:bg-brand-dark/40 rounded-2xl p-4 border border-white/40 dark:border-white/5 space-y-2">
+                            <div class="flex justify-between text-xs text-gray-700 dark:text-gray-400">
+                                <span class="font-medium">Asistencia técnica local</span>
+                                <span class="text-brand-accent dark:text-green-400 font-bold">100% Cobertura</span>
+                            </div>
+                            <div class="flex justify-between text-xs text-gray-700 dark:text-gray-400">
+                                <span class="font-medium">Repuestos originales</span>
+                                <span class="text-brand-orange font-bold">Stock Inmediato</span>
+                            </div>
+                        </div>
+
+                        <!-- Lema Oficial de Marca -->
+                        <div class="text-[9px] uppercase tracking-widest text-gray-550 dark:text-gray-500 font-bold">
+                            Wood-Mizer: "From forest to final form"
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VENTAJAS DE INGENIERÍA -->
+    <section class="py-16 sm:py-24 bg-white dark:bg-brand-charcoal transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-4 sr-bottom">
+                <h2 class="text-xs uppercase tracking-[0.25em] text-brand-orange font-bold">Tecnología de Vanguardia</h2>
+                <p class="text-2xl sm:text-4xl font-black tracking-tight text-brand-dark dark:text-white">
+                    La Diferencia Wood-Mizer en Tu Negocio
+                </p>
+                <p class="text-sm sm:text-base text-gray-655 dark:text-gray-300">
+                    Nuestros sistemas utilizan sierras de cinta ultra delgadas que maximizan cada tronco, reduciendo el desperdicio de aserrín y generando piezas de madera perfectamente calibradas.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+                <!-- Ventaja 1 -->
+                <div class="bg-brand-light dark:bg-brand-dark p-6 sm:p-8 rounded-2xl border border-gray-200 dark:border-white/5 hover:shadow-xl transition-all duration-300 relative overflow-hidden group sr-card">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-brand-orange/5 rounded-bl-full group-hover:bg-brand-orange/10 transition-colors"></div>
+                    <div class="w-12 h-12 rounded-xl bg-brand-orange/10 text-brand-orange flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-3 text-brand-dark dark:text-white">Corte Ultra Fino (Thin-Kerf)</h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+                        A diferencia de las sierras circulares pesadas que convierten hasta un 30% del tronco en aserrín inútil, Wood-Mizer utiliza una cinta que reduce el desperdicio a menos del 10%.
+                    </p>
+                </div>
+
+                <!-- Ventaja 2 -->
+                <div class="bg-brand-light dark:bg-brand-dark p-6 sm:p-8 rounded-2xl border border-gray-200 dark:border-white/5 hover:shadow-xl transition-all duration-300 relative overflow-hidden group sr-card">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-brand-accent/5 rounded-bl-full group-hover:bg-brand-accent/10 transition-colors"></div>
+                    <div class="w-12 h-12 rounded-xl bg-brand-accent/10 text-brand-accent flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-3 text-brand-dark dark:text-white">Confiabilidad Inquebrantable</h3>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+                        Chasis robustos construidos con los estándares internacionales más exigentes. Diseñados para trabajar jornadas pesadas con maderas duras tropicales (Cedro, Mundani, Pino, Teca, etc.)
+                    </p>
+                </div>
+
+                <!-- Ventaja 3 -->
+                <div class="bg-brand-light dark:bg-brand-dark p-6 sm:p-8 rounded-2xl border border-gray-200 dark:border-white/5 hover:shadow-xl transition-all duration-300 relative overflow-hidden group sr-card">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-brand-dark/5 rounded-bl-full group-hover:bg-brand-dark/10 transition-colors"></div>
+                    <div class="w-12 h-12 rounded-xl bg-brand-dark/10 dark:bg-white/10 text-brand-dark dark:text-white flex items-center justify-center mb-6">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                    <h3 class="text-lg sm:text-xl font-bold mb-3 text-brand-dark dark:text-white">Rápido Retorno de Inversión</h3>
+                    <p class="text-gray-655 dark:text-gray-300 text-sm leading-relaxed">
+                        Nuestros clientes en El Salvador reportan la amortización completa del equipo en menos de 10 meses gracias al brutal incremento en el porcentaje de madera utilizable.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CALCULADORA INTERACTIVA CON ESTILO GLASSMORPHISM PREMIUM -->
+    <section id="calculadora" class="py-16 sm:py-24 bg-gray-50 dark:bg-brand-dark relative transition-colors duration-300 overflow-hidden">
+        <!-- Esferas de adorno detrás de la calculadora para realzar el efecto de desenfoque del vidrio (Glassmorphism) -->
+        <div class="absolute w-72 h-72 bg-brand-orange/10 dark:bg-brand-orange/5 rounded-full blur-3xl -top-12 -right-12 z-0"></div>
+        <div class="absolute w-80 h-80 bg-brand-accent/10 dark:bg-brand-accent/5 rounded-full blur-3xl -bottom-16 -left-16 z-0"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-5 space-y-6 sr-left">
+                    <span class="text-brand-orange uppercase tracking-wider font-extrabold text-xs sm:text-sm block">Simulador Interactivo de Eficiencia</span>
+                    <h2 class="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight text-brand-dark dark:text-white">
+                        Calcula tu <br class="hidden sm:inline">Rendimiento Extra
+                    </h2>
+                    <p class="text-sm sm:text-base text-gray-660 dark:text-gray-300">
+                        Basado en el estudio histórico de rendimiento original de la fábrica. Con la sierra de cinta fina Wood-Mizer obtienes un promedio de <span class="text-brand-orange font-bold">60% más volumen final</span> comparado con la sierra circular tradicional con el mismo volumen de troncos.
+                    </p>
+                    
+                    <!-- Glassmorphism Banner Lateral -->
+                    <div class="bg-white/40 dark:bg-brand-charcoal/40 border border-white/50 dark:border-white/10 p-5 rounded-2xl space-y-3 shadow-lg backdrop-blur-md">
+                        <h4 class="text-sm font-bold text-brand-dark dark:text-white flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-brand-orange"></span>
+                            ¿Por qué hay tanta diferencia?
+                        </h4>
+                        <p class="text-xs text-gray-650 dark:text-gray-400">
+                            La sierra circular produce un canal de corte ancho (Kerf grueso de aprox. 1/4" o más), reduciendo valiosa madera a aserrín. La hoja Wood-Mizer solo requiere un canal de corte mínimo (aprox. 1/16"), dejando más tablas limpias por cada tronco.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Tarjeta de Calculadora Glassmorphism Premium -->
+                <div class="lg:col-span-7 bg-white/50 dark:bg-brand-charcoal/30 border border-white/60 dark:border-white/10 p-5 sm:p-8 rounded-3xl shadow-2xl backdrop-blur-xl space-y-6 sr-right">
+                    <h3 class="text-lg sm:text-xl font-bold text-brand-dark dark:text-white border-b border-gray-200 dark:border-white/10 pb-4">Simulador de Producción</h3>
+                    
+                    <div class="space-y-4">
+                        <!-- Entrada 1 -->
+                        <div>
+                            <label class="block text-xs sm:text-sm font-semibold text-gray-600 dark:text-gray-300 mb-2">Producción mensual estimada en pies tablares (FT):</label>
+                            <input type="number" id="prodInput" value="5000" class="w-full bg-white/60 dark:bg-brand-dark/60 border border-gray-300 dark:border-white/20 rounded-xl px-4 py-3.5 text-brand-dark dark:text-white font-mono text-lg focus:outline-none focus:border-brand-orange transition-colors" oninput="calculateYield()">
+                        </div>
+
+                        <!-- Entrada 2 -->
+                        <div>
+                            <label class="block text-xs sm:text-sm font-semibold text-gray-600 dark:text-gray-300 mb-2">Costo por pie de madera (USD $):</label>
+                            <div class="flex items-center space-x-4">
+                                <input type="range" id="priceSlider" min="0.5" max="5.0" step="0.1" value="1.5" class="w-full h-3 bg-gray-200 dark:bg-brand-dark rounded-lg appearance-none cursor-pointer accent-brand-orange" oninput="calculateYield()">
+                                <span class="text-base sm:text-lg font-mono font-bold text-brand-orange min-w-[70px] text-right" id="priceVal">$1.50</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Resultados Comparativos (Glassmorphism interno) -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+                        <!-- Sierra Circular -->
+                        <div class="bg-red-50/50 dark:bg-brand-dark/50 p-5 rounded-2xl border border-red-100/50 dark:border-white/5 space-y-2">
+                            <span class="text-xs text-red-550 dark:text-red-400 font-bold uppercase tracking-wider block">Sierra Circular</span>
+                            <div class="text-2xl font-mono font-black text-brand-dark dark:text-white" id="circYield">3,125 FT</div>
+                            <p class="text-[11px] text-gray-500 dark:text-gray-400">Pérdida masiva en aserrín.</p>
+                            <div class="text-xs text-gray-500 dark:text-gray-400 pt-2 border-t border-gray-200 dark:border-white/5">Valor estimado: <span class="text-brand-dark dark:text-white font-mono" id="circValue">$4,687</span></div>
+                        </div>
+
+                        <!-- Wood-Mizer -->
+                        <div class="bg-brand-orange/5 dark:bg-brand-orange/10 p-5 rounded-2xl border border-brand-orange/20 dark:border-brand-orange/30 space-y-2 relative overflow-hidden">
+                            <span class="text-xs text-brand-orange font-bold uppercase tracking-wider block">Aserradero Wood-Mizer</span>
+                            <div class="text-2xl font-mono font-black text-brand-orange" id="wmYield">5,000 FT</div>
+                            <p class="text-[11px] text-gray-650 dark:text-gray-300">Máximo rendimiento de fibra.</p>
+                            <div class="text-xs text-brand-orange/70 pt-2 border-t border-brand-orange/15 dark:border-brand-orange/20">Valor estimado: <span class="text-brand-dark dark:text-white font-mono" id="wmValue">$7,500</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Banner de Ganancia Extra (Glassmorphism Accent) -->
+                    <div class="bg-brand-accent/10 border border-brand-accent/30 rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left backdrop-blur-md">
+                        <div>
+                            <span class="text-xs uppercase tracking-wider text-brand-accent dark:text-green-400 font-bold block">Tu Ganancia Extra Directa</span>
+                            <span class="text-xl sm:text-2xl font-black text-brand-dark dark:text-white font-mono animate-pulse" id="extraProfit">+$2,812 USD</span>
+                        </div>
+                        <div class="bg-brand-accent text-white font-extrabold px-4 py-2 rounded-xl text-xs sm:text-sm shadow-md">
+                            +60% Eficiencia
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATÁLOGO DE ASERRADEROS -->
+    <section id="maquinaria" class="py-16 sm:py-24 bg-brand-light dark:bg-brand-charcoal transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-10 sm:mb-12 gap-6 sr-bottom">
+                <div class="max-w-xl space-y-3">
+                    <span class="text-brand-orange font-extrabold text-xs uppercase tracking-widest block">Aserraderos de Banda Fina</span>
+                    <h2 class="text-2xl sm:text-4xl font-black tracking-tight text-brand-dark dark:text-white">Nuestra Línea de Equipos</h2>
+                    <p class="text-gray-655 dark:text-gray-300 text-sm">Contamos con aserraderos portátiles e industriales configurables según la escala de tu aserradero o carpintería en El Salvador.</p>
+                </div>
+                
+                <!-- Filtros Deslizables en Celulares -->
+                <div class="flex overflow-x-auto pb-2 -mx-4 px-4 lg:mx-0 lg:px-0 lg:pb-0 space-x-2 no-scrollbar scroll-smooth items-center">
+                    <button onclick="filterCatalog('todos')" class="cat-btn flex-shrink-0 px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-brand-dark dark:bg-brand-orange text-white dark:text-white hover:bg-brand-orange transition-all shadow-md">Todos</button>
+                    <button onclick="filterCatalog('portatiles')" class="cat-btn flex-shrink-0 px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-white dark:bg-brand-dark text-gray-600 dark:text-gray-300 hover:bg-brand-orange hover:text-white transition-all border border-gray-200 dark:border-white/10">Portátiles</button>
+                    <button onclick="filterCatalog('industriales')" class="cat-btn flex-shrink-0 px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-white dark:bg-brand-dark text-gray-600 dark:text-gray-300 hover:bg-brand-orange hover:text-white transition-all border border-gray-200 dark:border-white/10">Industriales</button>
+                </div>
+            </div>
+
+            <!-- Grilla de Productos -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" id="productGrid">
+                <!-- Producto 1 -->
+                <div class="bg-white dark:bg-brand-dark rounded-3xl overflow-hidden border border-gray-200 dark:border-white/5 hover:shadow-2xl transition-all duration-300 product-card flex flex-col justify-between sr-card" data-cat="portatiles">
+                    <div>
+                        <div class="h-56 sm:h-64 bg-gray-200 dark:bg-brand-charcoal relative overflow-hidden group">
+                            <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=600" alt="Wood-Mizer LT15" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute top-4 left-4 bg-brand-orange text-white text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-full">
+                                El Más Vendido
+                            </div>
+                        </div>
+                        <div class="p-5 sm:p-6 space-y-4">
+                            <div class="flex justify-between items-center">
+                                <h3 class="text-lg sm:text-xl font-bold text-brand-dark dark:text-white">Wood-Mizer LT15</h3>
+                                <span class="text-[10px] sm:text-xs bg-gray-100 dark:bg-brand-charcoal font-bold text-gray-550 dark:text-gray-400 px-2.5 py-1 rounded-lg">Banda Estrecha</span>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300 text-xs sm:text-sm leading-relaxed">
+                                El estándar indiscutible para aserradores independientes, carpinterías de alta gama y fincas. Increíblemente versátil, fácil de transportar y con capacidad de aserrar troncos de hasta 70 cm de diámetro.
+                            </p>
+                            <div class="space-y-2 border-t border-gray-100 dark:border-white/10 pt-4">
+                                <div class="flex justify-between text-xs text-gray-550 dark:text-gray-400">
+                                    <span>Diámetro máx. tronco:</span>
+                                    <span class="font-bold text-brand-dark dark:text-white">70 cm (28")</span>
+                                </div>
+                                <div class="flex justify-between text-xs text-gray-555 dark:text-gray-400">
+                                    <span>Longitud de corte:</span>
+                                    <span class="font-bold text-brand-dark dark:text-white">5.4 m (Extensible)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5 sm:p-6 pt-0">
+                        <a href="#contacto" onclick="preselectEquip('LT15')" class="block text-center bg-brand-dark dark:bg-brand-charcoal hover:bg-brand-orange dark:hover:bg-brand-orange text-white text-xs font-bold uppercase tracking-wider py-3.5 rounded-xl transition-all">
+                            Solicitar Cotización Especial
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Producto 2 -->
+                <div class="bg-white dark:bg-brand-dark rounded-3xl overflow-hidden border border-gray-200 dark:border-white/5 hover:shadow-2xl transition-all duration-300 product-card flex flex-col justify-between sr-card" data-cat="industriales">
+                    <div>
+                        <div class="h-56 sm:h-64 bg-gray-200 dark:bg-brand-charcoal relative overflow-hidden group">
+                            <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&q=80&w=600" alt="Wood-Mizer LT40" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute top-4 left-4 bg-brand-dark dark:bg-brand-orange text-white text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-full">
+                                Industrial Premium
+                            </div>
+                        </div>
+                        <div class="p-5 sm:p-6 space-y-4">
+                            <div class="flex justify-between items-center">
+                                <h3 class="text-lg sm:text-xl font-bold text-brand-dark dark:text-white">Wood-Mizer LT40</h3>
+                                <span class="text-[10px] sm:text-xs bg-gray-100 dark:bg-brand-charcoal font-bold text-gray-550 dark:text-gray-400 px-2.5 py-1 rounded-lg">Hidráulico</span>
+                            </div>
+                            <p class="text-gray-655 dark:text-gray-300 text-xs sm:text-sm leading-relaxed">
+                                Diseñado para la alta producción forestal. Cuenta con manejo de troncos completamente hidráulico para maximizar la velocidad y reducir al mínimo el esfuerzo operativo humano.
+                            </p>
+                            <div class="space-y-2 border-t border-gray-100 dark:border-white/10 pt-4">
+                                <div class="flex justify-between text-xs text-gray-550 dark:text-gray-400">
+                                    <span>Diámetro máx. tronco:</span>
+                                    <span class="font-bold text-brand-dark dark:text-white">90 cm (36")</span>
+                                </div>
+                                <div class="flex justify-between text-xs text-gray-555 dark:text-gray-400">
+                                    <span>Avance:</span>
+                                    <span class="font-bold text-brand-dark dark:text-white">Hidráulico Automatizado</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5 sm:p-6 pt-0">
+                        <a href="#contacto" onclick="preselectEquip('LT40')" class="block text-center bg-brand-dark dark:bg-brand-charcoal hover:bg-brand-orange dark:hover:bg-brand-orange text-white text-xs font-bold uppercase tracking-wider py-3.5 rounded-xl transition-all">
+                            Solicitar Cotización Especial
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Producto 3 (Lathe-Mizer de la página 2 del PDF) -->
+                <div class="bg-white dark:bg-brand-dark rounded-3xl overflow-hidden border border-gray-200 dark:border-white/5 hover:shadow-2xl transition-all duration-300 product-card flex flex-col justify-between sr-card" data-cat="portatiles">
+                    <div>
+                        <div class="h-56 sm:h-64 bg-gray-200 dark:bg-brand-charcoal relative overflow-hidden group">
+                            <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&q=80&w=600" alt="Lathe-Mizer Wood-Mizer" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute top-4 left-4 bg-brand-accent text-white text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-full">
+                                Accesorio Especializado
+                            </div>
+                        </div>
+                        <div class="p-5 sm:p-6 space-y-4">
+                            <div class="flex justify-between items-center">
+                                <h3 class="text-lg sm:text-xl font-bold text-brand-dark dark:text-white">Torno Lathe-Mizer</h3>
+                                <span class="text-[10px] sm:text-xs bg-gray-100 dark:bg-brand-charcoal font-bold text-gray-550 dark:text-gray-400 px-2.5 py-1 rounded-lg">Torno-Fresador</span>
+                            </div>
+                            <p class="text-gray-650 dark:text-gray-300 text-xs sm:text-sm leading-relaxed">
+                                Tal como se muestra en nuestra documentación técnica original. Permite convertir aserraderos Wood-Mizer compatibles en un potente torno capaz de producir postes de madera redondos, hexagonales u octagonales.
+                            </p>
+                            <div class="space-y-2 border-t border-gray-100 dark:border-white/10 pt-4">
+                                <div class="flex justify-between text-xs text-gray-550 dark:text-gray-400">
+                                    <span>Formas de salida:</span>
+                                    <span class="font-bold text-brand-dark dark:text-white">Redondo, Triángulo, Hexágono</span>
+                                </div>
+                                <div class="flex justify-between text-xs text-gray-555 dark:text-gray-400">
+                                    <span>Maderas ideales:</span>
+                                    <span class="font-bold text-brand-dark dark:text-white">Cedro, Mundani, Pino</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5 sm:p-6 pt-0">
+                        <a href="#contacto" onclick="preselectEquip('Lathe-Mizer')" class="block text-center bg-brand-dark dark:bg-brand-charcoal hover:bg-brand-orange dark:hover:bg-brand-orange text-white text-xs font-bold uppercase tracking-wider py-3.5 rounded-xl transition-all">
+                            Solicitar Cotización Especial
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SIERRAS Y CONSUMIBLES ORIGINALES (Glassmorphism Estilizado) -->
+    <section id="repuestos" class="py-16 sm:py-24 bg-white dark:bg-brand-dark text-brand-dark dark:text-white overflow-hidden relative transition-colors duration-300">
+        <!-- Luces traseras sutiles en modo oscuro -->
+        <div class="absolute w-96 h-96 bg-brand-orange/5 rounded-full blur-3xl top-1/2 left-1/3 z-0"></div>
+
+        <div class="absolute inset-0 z-0 opacity-10 dark:opacity-10">
+            <div class="w-full h-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-4 space-y-5 sr-left">
+                    <span class="text-brand-orange font-extrabold text-xs uppercase tracking-widest block">Consumibles de Alta Precisión</span>
+                    <h2 class="text-2xl sm:text-4xl font-black tracking-tight leading-tight text-brand-dark dark:text-white">Sierras de Banda Originales</h2>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                        El secreto del rendimiento de tu aserradero reside en la calidad de la hoja. Cardocoffee distribuye en todo El Salvador la línea oficial de hojas Wood-Mizer, diseñadas para responder en cualquier tipo de madera, húmeda, seca o nudosa.
+                    </p>
+                    <div class="bg-brand-light/70 dark:bg-brand-charcoal/40 border border-gray-200 dark:border-white/10 p-4 rounded-2xl space-y-2 backdrop-blur-md">
+                        <span class="text-xs font-bold text-brand-accent block">🔧 Servicio de Afilado Automatizado</span>
+                        <p class="text-xs text-gray-500 dark:text-gray-450">Ofrecemos servicio postventa completo y mantenimiento certificado para extender la vida útil de tus herramientas.</p>
+                    </div>
+                </div>
+
+                <!-- Línea de Repuestos (Glassmorphism Cards) -->
+                <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sr-right">
+                    <!-- Hoja 1 -->
+                    <div class="bg-white/40 dark:bg-brand-charcoal/30 p-5 sm:p-6 rounded-2xl border border-white/60 dark:border-white/10 space-y-3 hover:border-brand-orange/40 backdrop-blur-md transition-all duration-300 shadow-md">
+                        <div class="text-brand-orange font-bold text-xs uppercase tracking-widest">Premium Alloy</div>
+                        <h4 class="text-lg font-black text-brand-dark dark:text-white">RazorTip</h4>
+                        <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">Puntas con carburo endurecido para cortes de extrema precisión en maderas duras tropicales.</p>
+                        <span class="inline-block bg-gray-200/50 dark:bg-white/5 text-[10px] font-bold px-2.5 py-1 rounded text-gray-700 dark:text-gray-300">Resistencia Extrema</span>
+                    </div>
+
+                    <!-- Hoja 2 -->
+                    <div class="bg-white/40 dark:bg-brand-charcoal/30 p-5 sm:p-6 rounded-2xl border border-white/60 dark:border-white/10 space-y-3 hover:border-brand-orange/40 backdrop-blur-md transition-all duration-300 shadow-md">
+                        <div class="text-brand-orange font-bold text-xs uppercase tracking-widest">Bi-Metal</div>
+                        <h4 class="text-lg font-black text-brand-dark dark:text-white">BiMetal</h4>
+                        <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">Diseñadas para aserrar clavos ocultos o maderas sucias. Flexibilidad excepcional.</p>
+                        <span class="inline-block bg-gray-200/50 dark:bg-white/5 text-[10px] font-bold px-2.5 py-1 rounded text-gray-700 dark:text-gray-300">Máxima Flexibilidad</span>
+                    </div>
+
+                    <!-- Hoja 3 -->
+                    <div class="bg-white/40 dark:bg-brand-charcoal/30 p-5 sm:p-6 rounded-2xl border border-white/60 dark:border-white/10 space-y-3 hover:border-brand-orange/40 backdrop-blur-md transition-all duration-300 shadow-md">
+                        <div class="text-brand-orange font-bold text-xs uppercase tracking-widest">Carbon Alloy</div>
+                        <h4 class="text-lg font-black text-brand-dark dark:text-white">DoubleHard</h4>
+                        <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">La sierra más popular del mercado mundial. Acero endurecido por inducción magnética.</p>
+                        <span class="inline-block bg-gray-200/50 dark:bg-white/5 text-[10px] font-bold px-2.5 py-1 rounded text-gray-700 dark:text-gray-300">La Todo Terreno</span>
+                    </div>
+
+                    <!-- Hoja 4 -->
+                    <div class="bg-white/40 dark:bg-brand-charcoal/30 p-5 sm:p-6 rounded-2xl border border-white/60 dark:border-white/10 space-y-3 hover:border-brand-orange/40 backdrop-blur-md transition-all duration-300 shadow-md">
+                        <div class="text-brand-orange font-bold text-xs uppercase tracking-widest">High Performance</div>
+                        <h4 class="text-lg font-black text-brand-dark dark:text-white">SilverTip</h4>
+                        <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">Acero al carbono de la más alta calidad optimizado para cortes rápidos en maderas blandas.</p>
+                        <span class="inline-block bg-gray-200/50 dark:bg-white/5 text-[10px] font-bold px-2.5 py-1 rounded text-gray-700 dark:text-gray-300">Alta Producción</span>
+                    </div>
+
+                    <!-- Hoja 5 -->
+                    <div class="bg-white/40 dark:bg-brand-charcoal/30 p-5 sm:p-6 rounded-2xl border border-white/60 dark:border-white/10 space-y-3 hover:border-brand-orange/40 backdrop-blur-md transition-all duration-300 shadow-md">
+                        <div class="text-brand-orange font-bold text-xs uppercase tracking-widest">Heavy Duty</div>
+                        <h4 class="text-lg font-black text-brand-dark dark:text-white">Vortex</h4>
+                        <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">Hojas con tecnología de remoción de aserrín incorporada para tablas limpias de inmediato.</p>
+                        <span class="inline-block bg-gray-200/50 dark:bg-white/5 text-[10px] font-bold px-2.5 py-1 rounded text-gray-700 dark:text-gray-300">Limpieza de Corte</span>
+                    </div>
+
+                    <!-- Caja de Llamada a la Acción -->
+                    <div class="bg-gradient-to-tr from-brand-orange to-amber-600 p-5 sm:p-6 rounded-2xl text-white flex flex-col justify-between shadow-lg">
+                        <div>
+                            <h4 class="text-lg font-black">¿Necesitas repuestos?</h4>
+                            <p class="text-xs text-white/90 mt-1 leading-relaxed">Tenemos stock listo para despachar a cualquier zona de El Salvador de inmediato.</p>
+                        </div>
+                        <a href="#contacto" class="mt-4 inline-block bg-brand-dark dark:bg-white hover:bg-brand-dark/90 dark:hover:bg-gray-100 text-white dark:text-brand-dark text-xs font-bold text-center uppercase tracking-wider py-3.5 rounded-xl transition-all">
+                            Verificar Stock
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NUESTRO LEGADO DE 25 AÑOS -->
+    <section id="trayectoria" class="py-16 sm:py-24 bg-gray-50 dark:bg-brand-charcoal transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Columna Izquierda con Texto -->
+                <div class="lg:col-span-5 relative space-y-6 sr-left">
+                    <span class="text-brand-orange font-extrabold text-xs uppercase tracking-widest block">Nuestra Historia en El Salvador</span>
+                    <h2 class="text-2xl sm:text-4xl font-black tracking-tight text-brand-dark dark:text-white leading-tight">
+                        Cardocoffee:<br> Compromiso, Tradición y Desarrollo
+                    </h2>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base leading-relaxed">
+                        Fundada hace 25 años por la familia Cardoza, nuestra empresa no solo ha introducido tecnología de vanguardia para tecnificar los aserraderos salvadoreños, sino que también ha mantenido un sólido compromiso social con las comunidades locales, apoyando activamente obras parroquiales y ganaderas del país.
+                    </p>
+
+                    <!-- Cuadro de Cita Parroquial (Págs 3 y 4 del PDF) -->
+                    <div class="bg-white dark:bg-brand-dark p-5 sm:p-6 rounded-2xl border-l-4 border-brand-orange space-y-3 shadow-md">
+                        <p class="text-xs italic text-gray-700 dark:text-gray-300 leading-relaxed">
+                            "Agradezco los donativos económicos para el apoyo y sobrevivencia... Que Dios bendiga a sus seres queridos y los proteja siempre."
+                        </p>
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-full bg-brand-light dark:bg-brand-charcoal text-brand-dark dark:text-white flex items-center justify-center font-bold text-sm">
+                                SM
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-brand-dark dark:text-white">Mons. Sergio Moreno</h4>
+                                <p class="text-[10px] text-gray-550">Parroquia de San José Guayabal</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha con Logros -->
+                <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 sr-right">
+                    <!-- Logro 1 -->
+                    <div class="bg-white dark:bg-brand-dark p-5 sm:p-6 rounded-2xl border border-gray-200 dark:border-white/5 flex flex-col justify-between shadow-sm transition-transform duration-350 hover:-translate-y-1">
+                        <div class="space-y-2">
+                            <span class="text-xs font-bold text-brand-orange uppercase">Trayectoria</span>
+                            <h4 class="text-lg sm:text-xl font-bold text-brand-dark dark:text-white">25+ Años</h4>
+                            <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">Apoyando a los sectores forestales, ganaderos y de procesamiento de madera en El Salvador.</p>
+                        </div>
+                        <span class="text-[10px] uppercase font-bold text-gray-400 mt-4 block">Desde El Salvador</span>
+                    </div>
+
+                    <!-- Logro 2 -->
+                    <div class="bg-white dark:bg-brand-dark p-5 sm:p-6 rounded-2xl border border-gray-200 dark:border-white/5 flex flex-col justify-between shadow-sm transition-transform duration-350 hover:-translate-y-1">
+                        <div class="space-y-2">
+                            <span class="text-xs font-bold text-brand-accent uppercase">Origen Técnico</span>
+                            <h4 class="text-lg sm:text-xl font-bold text-brand-dark dark:text-white">Ingeniería Agroquímica</h4>
+                            <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">Respaldados por el rigor técnico de nuestro fundador Alfredo Cardoza, ex-gerente de Bayer de El Salvador.</p>
+                        </div>
+                        <span class="text-[10px] uppercase font-bold text-gray-400 mt-4 block">Garantía de Disciplina</span>
+                    </div>
+
+                    <!-- Logro 3 -->
+                    <div class="bg-white dark:bg-brand-dark p-5 sm:p-6 rounded-2xl border border-gray-200 dark:border-white/5 flex flex-col justify-between shadow-sm transition-transform duration-350 hover:-translate-y-1">
+                        <div class="space-y-2">
+                            <span class="text-xs font-bold text-yellow-600 uppercase">Reconocimiento Global</span>
+                            <h4 class="text-lg sm:text-xl font-bold text-brand-dark dark:text-white">$250k Club Award</h4>
+                            <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">Premiados reiteradamente por las Oficinas Centrales de Wood-Mizer debido a nuestro impecable servicio postventa.</p>
+                        </div>
+                        <span class="text-[10px] uppercase font-bold text-gray-400 mt-4 block">Logro Internacional</span>
+                    </div>
+
+                    <!-- Logro 4 -->
+                    <div class="bg-white dark:bg-brand-dark p-5 sm:p-6 rounded-2xl border border-gray-200 dark:border-white/5 flex flex-col justify-between shadow-sm transition-transform duration-350 hover:-translate-y-1">
+                        <div class="space-y-2">
+                            <span class="text-xs font-bold text-brand-orange uppercase">Clientes Satisfechos</span>
+                            <h4 class="text-lg sm:text-xl font-bold text-brand-dark dark:text-white">Soporte Continuo</h4>
+                            <p class="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">Aserradores y finqueros confían en Cardocoffee para mantener su maquinaria operativa al 100%.</p>
+                        </div>
+                        <span class="text-[10px] uppercase font-bold text-gray-400 mt-4 block">Nuestra Razón de Ser</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE ALIADOS COMERCIALES -->
+    <section class="py-12 bg-white dark:bg-brand-dark border-t border-b border-gray-200 dark:border-white/10 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8 sr-bottom">
+                <span class="text-xs uppercase font-extrabold text-brand-orange tracking-widest block mb-1">Nuestros Aliados Comerciales</span>
+                <h3 class="text-xl font-black text-brand-dark dark:text-white">Con la Confianza de Grandes Asociaciones</h3>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 items-center justify-items-center opacity-75 sr-bottom">
+                <div class="bg-brand-light dark:bg-brand-charcoal p-5 rounded-2xl shadow-sm border border-gray-250 dark:border-white/5 text-center w-full max-w-[200px]">
+                    <span class="text-xs sm:text-sm font-bold block text-brand-dark dark:text-white">Asociación Ganadera</span>
+                    <span class="text-[9px] sm:text-[10px] text-gray-500 dark:text-gray-400 block">San Juan Opico</span>
+                </div>
+                <div class="bg-brand-light dark:bg-brand-charcoal p-5 rounded-2xl shadow-sm border border-gray-255 dark:border-white/5 text-center w-full max-w-[200px]">
+                    <span class="text-xs sm:text-sm font-bold block text-brand-dark dark:text-white">Bayer de El Salvador</span>
+                    <span class="text-[9px] sm:text-[10px] text-gray-500 dark:text-gray-400 block">Agroquímicos</span>
+                </div>
+                <div class="bg-brand-light dark:bg-brand-charcoal p-5 rounded-2xl shadow-sm border border-gray-255 dark:border-white/5 text-center w-full max-w-[200px]">
+                    <span class="text-xs sm:text-sm font-bold block text-brand-dark dark:text-white">Mundani</span>
+                    <span class="text-[9px] sm:text-[10px] text-gray-500 dark:text-gray-400 block">Procesadores de Teca</span>
+                </div>
+                <div class="bg-brand-light dark:bg-brand-charcoal p-5 rounded-2xl shadow-sm border border-gray-255 dark:border-white/5 text-center w-full max-w-[200px]">
+                    <span class="text-xs sm:text-sm font-bold block text-brand-dark dark:text-white">Parroquia de</span>
+                    <span class="text-[9px] sm:text-[10px] text-gray-500 dark:text-gray-400 block">San José Guayabal</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMULARIO DE CONTACTO INTERACTIVO CON GLASSMORPHISM -->
+    <section id="contacto" class="py-16 sm:py-24 bg-brand-light dark:bg-brand-dark text-brand-dark dark:text-white relative transition-colors duration-300 overflow-hidden">
+        <div class="absolute w-[450px] h-[450px] bg-brand-orange/5 dark:bg-brand-orange/5 rounded-full blur-[100px] bottom-0 right-0 z-0"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <!-- Columna de Información -->
+                <div class="lg:col-span-5 space-y-6 sr-left">
+                    <span class="text-brand-orange font-extrabold text-xs uppercase tracking-widest block">Contacto Directo</span>
+                    <h2 class="text-2xl sm:text-4xl font-black tracking-tight text-brand-dark dark:text-white leading-tight">¿Listo para duplicar tu producción?</h2>
+                    <p class="text-gray-605 dark:text-gray-300 text-sm leading-relaxed">
+                        Completa nuestro formulario interactivo de cotización y recibe un análisis de rendimiento gratuito y personalizado para tu aserradero. También puedes escribirnos por WhatsApp para soporte de repuestos de inmediato.
+                    </p>
+
+                    <!-- Detalles de Contacto -->
+                    <div class="space-y-4 pt-4 border-t border-gray-300 dark:border-white/10 text-sm">
+                        <div class="flex items-center space-x-3 text-gray-700 dark:text-gray-300">
+                            <span class="text-brand-orange font-bold text-lg">📍</span>
+                            <span>San Salvador, El Salvador. Distribución Nacional</span>
+                        </div>
+                        <div class="flex items-center space-x-3 text-gray-700 dark:text-gray-300">
+                            <span class="text-brand-orange font-bold text-lg">📞</span>
+                            <span>+503 2200-XXXX / +503 7XXX-XXXX (Llamadas & WhatsApp)</span>
+                        </div>
+                        <div class="flex items-center space-x-3 text-gray-700 dark:text-gray-300">
+                            <span class="text-brand-orange font-bold text-lg">✉</span>
+                            <span>info@cardocoffee.com</span>
+                        </div>
+                    </div>
+
+                    <!-- Notificación de Horas de Trabajo -->
+                    <div class="bg-brand-accent/10 border border-brand-accent/30 rounded-2xl p-4 flex items-center space-x-3 backdrop-blur-md">
+                        <span class="flex-shrink-0 w-3 h-3 rounded-full bg-brand-accent animate-ping"></span>
+                        <p class="text-xs text-brand-accent font-semibold">Taller de repuestos abierto de Lunes a Sábado.</p>
+                    </div>
+                </div>
+
+                <!-- Columna de Formulario (Glassmorphism Estilizado) -->
+                <div class="lg:col-span-7 bg-white/60 dark:bg-brand-charcoal/30 p-5 sm:p-8 rounded-3xl border border-white/60 dark:border-white/10 shadow-2xl space-y-6 backdrop-blur-xl sr-right">
+                    <h3 class="text-lg sm:text-xl font-bold text-brand-dark dark:text-white border-b border-gray-150 dark:border-white/5 pb-4">Solicitud de Cotización y Soporte</h3>
+                    
+                    <form id="quoteForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase mb-1">Nombre Completo</label>
+                                <input type="text" id="formName" required class="w-full bg-white/50 dark:bg-brand-dark/50 border border-gray-300 dark:border-white/10 rounded-xl px-4 py-3.5 text-brand-dark dark:text-white focus:outline-none focus:border-brand-orange transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase mb-1">Teléfono (WhatsApp)</label>
+                                <input type="tel" id="formPhone" required placeholder="+503" class="w-full bg-white/50 dark:bg-brand-dark/50 border border-gray-300 dark:border-white/10 rounded-xl px-4 py-3.5 text-brand-dark dark:text-white focus:outline-none focus:border-brand-orange transition-colors">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase mb-1">Modelo de Interés</label>
+                                <select id="formProduct" class="w-full bg-white/50 dark:bg-brand-dark/50 border border-gray-300 dark:border-white/10 rounded-xl px-4 py-3.5 text-brand-dark dark:text-white focus:outline-none focus:border-brand-orange transition-colors">
+                                    <option value="LT15">Aserradero Wood-Mizer LT15</option>
+                                    <option value="LT40">Aserradero Wood-Mizer LT40</option>
+                                    <option value="Lathe-Mizer">Torno Lathe-Mizer (Torno Woodmizer)</option>
+                                    <option value="Sierras">Sierras y Consumibles (DoubleHard, RazorTip, etc)</option>
+                                    <option value="Soporte">Soporte Técnico Especializado</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase mb-1">Tipo de Madera de Trabajo</label>
+                                <input type="text" id="formWood" placeholder="Ejem: Pino, Cedro, Mundani, Teca" class="w-full bg-white/50 dark:bg-brand-dark/50 border border-gray-300 dark:border-white/10 rounded-xl px-4 py-3.5 text-brand-dark dark:text-white focus:outline-none focus:border-brand-orange transition-colors">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-gray-500 dark:text-gray-400 uppercase mb-1">Mensaje o Detalle Adicional</label>
+                            <textarea id="formMessage" rows="3" placeholder="Por favor detalla tu volumen de producción estimado o necesidades específicas de repuestos." class="w-full bg-white/50 dark:bg-brand-dark/50 border border-gray-300 dark:border-white/10 rounded-xl px-4 py-3.5 text-brand-dark dark:text-white focus:outline-none focus:border-brand-orange transition-colors"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-brand-orange hover:bg-orange-600 text-white font-extrabold text-xs uppercase tracking-wider py-4 rounded-xl transition-all shadow-lg shadow-brand-orange/20 hover:scale-[1.01]">
+                            Enviar Solicitud / WhatsApp Directo
+                        </button>
+                    </form>
+
+                    <!-- Estado de Éxito -->
+                    <div id="thankYouMsg" class="hidden bg-brand-accent/10 border border-brand-accent/30 p-6 rounded-2xl text-center space-y-3 backdrop-blur-md">
+                        <span class="text-2xl">✓</span>
+                        <h4 class="text-lg font-bold text-brand-accent">¡Formulario Recibido con Éxito!</h4>
+                        <p class="text-xs text-gray-600 dark:text-gray-300">Un especialista técnico de Cardocoffee se contactará contigo vía WhatsApp en los próximos minutos para brindarte asesoría personalizada.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="bg-gray-100 dark:bg-brand-dark text-brand-dark dark:text-white border-t border-gray-200 dark:border-white/10 py-12 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+            <div class="flex flex-col md:flex-row items-center justify-between border-b border-gray-200 dark:border-white/10 pb-8 gap-6">
+                <!-- Logotipo -->
+                <div class="flex items-center space-x-3">
+                    <div class="bg-brand-orange text-white font-extrabold px-3 py-1.5 rounded text-lg tracking-wider">
+                        WM
+                    </div>
+                    <div>
+                        <span class="text-lg font-black tracking-tight block text-brand-dark dark:text-white">CARDOCOFFEE</span>
+                        <span class="text-[9px] uppercase tracking-[0.2em] text-brand-orange font-bold block -mt-1">Distribuidor Autorizado Wood-Mizer</span>
+                    </div>
+                </div>
+
+                <div class="flex space-x-6 text-xs text-gray-650 dark:text-gray-400">
+                    <a href="#inicio" class="hover:text-brand-orange">Inicio</a>
+                    <a href="#maquinaria" class="hover:text-brand-orange">Aserraderos</a>
+                    <a href="#repuestos" class="hover:text-brand-orange">Hojas</a>
+                    <a href="#calculadora" class="hover:text-brand-orange">Simulador</a>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center justify-between text-xs text-gray-500 gap-4">
+                <p class="text-center md:text-left leading-relaxed">© 2026 Cardocoffee S.A. de C.V. Todos los derechos reservados. Wood-Mizer, LT15, Lathe-Mizer y DoubleHard son marcas registradas de Wood-Mizer LLC.</p>
+                <p class="whitespace-nowrap">Diseño Web Profesional de Alta Gama</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVIDAD CON JAVASCRIPT -->
+    <script>
+        // Inicialización y persistencia del Modo Oscuro
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        function toggleDarkMode() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Ajuste de scroll suave para encabezado fijo
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const headerHeight = document.getElementById('mainHeader').offsetHeight;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Menú de Pantalla Completa Táctil
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const hamburgerIcon = document.getElementById('hamburgerIcon');
+        const closeIcon = document.getElementById('closeIcon');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+                mobileMenu.classList.add('flex');
+                hamburgerIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
+            } else {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+                hamburgerIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            }
+        });
+
+        function toggleMenu() {
+            mobileMenu.classList.add('hidden');
+            mobileMenu.classList.remove('flex');
+            hamburgerIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+        }
+
+        // Calculadora de Rendimiento en Tiempo Real
+        function calculateYield() {
+            const inputProd = parseFloat(document.getElementById('prodInput').value) || 0;
+            const price = parseFloat(document.getElementById('priceSlider').value) || 1.5;
+            
+            // Renderizar costo del pie
+            document.getElementById('priceVal').innerText = `$${price.toFixed(2)}`;
+
+            const circularYield = Math.round(inputProd / 1.6);
+            const wmYieldValue = Math.round(inputProd);
+
+            const circularValue = circularYield * price;
+            const wmValue = wmYieldValue * price;
+            const extraProfit = wmValue - circularValue;
+
+            // Renderizar elementos
+            document.getElementById('circYield').innerText = `${circularYield.toLocaleString()} FT`;
+            document.getElementById('wmYield').innerText = `${wmYieldValue.toLocaleString()} FT`;
+
+            document.getElementById('circValue').innerText = `$${Math.round(circularValue).toLocaleString()} USD`;
+            document.getElementById('wmValue').innerText = `$${Math.round(wmValue).toLocaleString()} USD`;
+            document.getElementById('extraProfit').innerText = `+$${Math.round(extraProfit).toLocaleString()} USD`;
+        }
+
+        // Filtrado dinámico del Catálogo
+        function filterCatalog(category) {
+            const cards = document.querySelectorAll('.product-card');
+            cards.forEach(card => {
+                if (category === 'todos') {
+                    card.classList.remove('hidden');
+                } else if (card.getAttribute('data-cat') === category) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            // Actualizar estilo del botón activo
+            const buttons = document.querySelectorAll('.cat-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-brand-dark', 'dark:bg-brand-orange', 'text-white');
+                btn.classList.add('bg-white', 'dark:bg-brand-dark', 'text-gray-600', 'dark:text-gray-300', 'border', 'border-gray-200', 'dark:border-white/10');
+            });
+
+            const activeBtn = event.currentTarget;
+            activeBtn.classList.add('bg-brand-dark', 'dark:bg-brand-orange', 'text-white');
+            activeBtn.classList.remove('bg-white', 'dark:bg-brand-dark', 'text-gray-600', 'dark:text-gray-300', 'border-gray-200', 'dark:border-white/10');
+        }
+
+        // Preselección de equipos en el formulario de contacto
+        function preselectEquip(model) {
+            document.getElementById('formProduct').value = model;
+        }
+
+        // Manejo del formulario y redirección a WhatsApp
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('formName').value;
+            const phone = document.getElementById('formPhone').value;
+            const product = document.getElementById('formProduct').value;
+            const wood = document.getElementById('formWood').value;
+            const message = document.getElementById('formMessage').value;
+
+            if (!name || !phone) return;
+
+            document.getElementById('quoteForm').classList.add('hidden');
+            document.getElementById('thankYouMsg').classList.remove('hidden');
+
+            const whatsappText = encodeURIComponent(
+                `¡Hola Cardocoffee! Mi nombre es ${name}. Estoy interesado en cotizar el equipo/repuesto Wood-Mizer: ${product}. Trabajo maderas tipo ${wood}. Mensaje: ${message}.`
+            );
+            
+            setTimeout(() => {
+                window.open(`https://wa.me/50370000000?text=${whatsappText}`, '_blank');
+            }, 1500);
+        }
+
+        // --- EFECTO PARALLAX NATIVO ---
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxBg = document.querySelector('.parallax-bg');
+            if (parallaxBg) {
+                // Desplazamiento lento del fondo para un efecto de profundidad óptimo
+                parallaxBg.style.transform = `translate3d(0px, ${scrolled * 0.35}px, 0px)`;
+            }
+        });
+
+        // --- CONFIGURACIÓN CERTIFICADA DE SCROLLREVEAL.JS ---
+        document.addEventListener("DOMContentLoaded", function () {
+            // Inicialización de la librería con configuración predeterminada refinada
+            const sr = ScrollReveal({
+                origin: 'bottom',
+                distance: '60px',
+                duration: 1000,
+                delay: 200,
+                reset: false // Cambia a true si quieres que se repita la animación cada vez que entra en pantalla
+            });
+
+            // Animaciones por clases específicas
+            sr.reveal('.sr-bottom', { interval: 100 });
+            sr.reveal('.sr-left', { origin: 'left', distance: '80px', duration: 1200 });
+            sr.reveal('.sr-right', { origin: 'right', distance: '80px', duration: 1200 });
+            sr.reveal('.sr-card', { interval: 150, scale: 0.95 });
+        });
+
+        // Ejecución inicial de cálculos al cargar
+        window.onload = function() {
+            calculateYield();
+        }
+    </script>
+</body>
+</html>
